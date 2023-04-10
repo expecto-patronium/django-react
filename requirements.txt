@@ -13,3 +13,5 @@ python-dotenv==0.20.0
 django-allauth==0.51.0
 whitenoise
 django-allauth==0.51.0
+psycopg2-binary==2.9.6
+psycopg2==2.9.6

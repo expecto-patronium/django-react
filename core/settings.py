@@ -77,9 +77,13 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'hasnain_db',
+        'USER': "hasnain",
+        'PASSWORD': '#Galaxyj5',
+        'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
+        # 'HOST': '127.0.0.1',
+    },
 }
 
 
