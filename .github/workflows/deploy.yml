@@ -2,10 +2,10 @@ name: Deploy to GAE
 
 # Controls when the workflow will run
 on:
-  push:
-    branches: [ hasnain-django ]
-  pull_request:
-    branches: [ hasnain-django ]
+#  push:
+#    branches: [ hasnain-django ]
+#  pull_request:
+#    branches: [ hasnain-django ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
