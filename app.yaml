@@ -3,10 +3,10 @@ service: hasnain-django-react
 runtime: python38
 handlers:
 
-- url: /static
-  static_dir: static/
+- url: front-todo/build/static
+  static_dir: front-todo/build/static/
 - url: /.*
-#  static_files: /front-todo/build/index.html
+  static_files: front-todo/build/static
   script: auto
 
 entrypoint: gunicorn -b :$PORT core.wsgi
