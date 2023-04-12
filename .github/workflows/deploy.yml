@@ -33,6 +33,7 @@ jobs:
       uses: actions/setup-node@v2
     - name: Building FrontEnd
       run: |
+            cd front-todo
             npm dedupe
             npm install --force
             npm run build
