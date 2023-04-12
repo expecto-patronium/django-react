@@ -11,7 +11,7 @@ handlers:
 # (along with the entire handlers section) when there are no static 
 # files defined.
 - url: /.*
-  static_files: /build/index.html
-  script: auto
+  static_files: /front-todo/build/index.html
+#  script: auto
 
 entrypoint: gunicorn -b :$PORT core.wsgi

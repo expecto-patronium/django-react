@@ -118,6 +118,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'front-todo/build/static'), ]
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'front-todo/build/static')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
