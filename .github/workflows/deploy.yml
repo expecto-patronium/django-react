@@ -37,6 +37,7 @@ jobs:
             npm dedupe
             npm install --force
             npm run build
+            cd ..
 
     ##### CREATE RUNTIME ENV FILE FOR DEPLOYMENT, AND ADD SERVICE-ACCOUNT-KEY.json IF NEEDED
     - name: Creating Runtime .env and add service-account-key
