@@ -29,13 +29,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
-    - name: Set up the Node and Node modules
-      uses: actions/checkout@v2
-      run: |
-         npm dedupe
-         npm install
-         npm start build
     ##### CREATE RUNTIME ENV FILE FOR DEPLOYMENT, AND ADD SERVICE-ACCOUNT-KEY.json IF NEEDED
     - name: Creating Runtime .env and add service-account-key
       run: |
