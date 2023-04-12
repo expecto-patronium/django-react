@@ -3,7 +3,7 @@ service: hasnain-django-react
 runtime: python38
 handlers:
 
-- url: front-todo/build/static
+- url: /front-todo/build/static
   static_dir: front-todo/build/static/
 #- url: /.*
 #  static_files: front-todo/build/static
