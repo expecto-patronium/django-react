@@ -4,7 +4,7 @@ runtime: python38
 handlers:
 
 
-- url: /front-todo/build/static
+- url: /front-todo/build/
   static_dir: front-todo/build/static/
 - url: /.*
   script: auto
