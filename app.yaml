@@ -1,5 +1,5 @@
 # [START django_app]
-service: hasnain-django-react
+service: hasnain-django-react1
 runtime: python38
 handlers:
 
