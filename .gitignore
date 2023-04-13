@@ -6,3 +6,4 @@ rnd_serializer.py
 *.pyc
 *.pyo
 .env
+rnd_serizlie.py
