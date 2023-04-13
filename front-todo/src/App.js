@@ -16,8 +16,8 @@ function App() {
           <Route path="/" element={<Layout />} >
           {/* <Route path="/new" element={<Card2 />} /> */}
 
-            {/* <Route path="/" index element={<LoginReg />} /> */}
-            <Route path="login" element={!access_token ? <LoginReg /> : <Navigate to="/home" />} />
+            { <Route index element={!access_token ? <LoginReg /> : <Navigate to="/home" />} /> }
+            <Route path="login" index element={!access_token ? <LoginReg /> : <Navigate to="/home" />} />
             </Route>
 
           {/* <Route path="/home" element={access_token ? <Todo /> : <Navigate to="/login" />} /> */}
