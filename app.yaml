@@ -8,6 +8,6 @@ handlers:
   static_dir: front-todo/build/static/
 - url: /.*
   static_files: front-todo/build/static
-#  script: auto
+  script: auto
 
 entrypoint: gunicorn -b :$PORT core.wsgi
