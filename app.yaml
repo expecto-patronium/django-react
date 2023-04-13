@@ -1,11 +1,11 @@
 # [START django_app]
-service: hasnain-django-react1
+service: hasnain-django-react2
 runtime: python38
 handlers:
 
 
-- url: /front-todo/build/
-  static_dir: front-todo/build/static/
+- url: /front-todo/build
+  static_dir: front-todo/build/
 - url: /.*
   script: auto
 
