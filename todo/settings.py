@@ -4,7 +4,7 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-(l8#v&3+puh=%xfpfrwq!=+5xo+%#8f1u7j*)dj2t0@ibm)a(r'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_HASNAIN')
 
 DEBUG = True
 
@@ -58,21 +58,19 @@ TEMPLATES = [
 WSGI_APPLICATION = 'todo.wsgi.application'
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': 'hasnain_db',
-    #     'USER': "hasnain",
-    #     'PASSWORD': '#Galaxyj5',
-    #     'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
-    #     # 'HOST': 'C:\\Users\\ahgam\\OneDrive\\Documents\\cloud-sql-proxy',
-    #     # 'HOST': '127.0.0.1',
-    #     # 'PORT': '3308',
-    # },
-
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DB_NAME_HASNAIN'),
+        'USER': os.environ.get('DB_USER_HASNAIN'),
+        'PASSWORD': os.environ.get('DB_PWD_HASNAIN'),
+        'HOST': os.environ.get("DB_HOST_HASNAIN"),
+        "PORT": os.environ.get("DB_PORT_HASNAIN")
+    },
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
 }
 
 AUTH_PASSWORD_VALIDATORS = [

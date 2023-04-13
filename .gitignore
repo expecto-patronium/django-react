@@ -5,3 +5,4 @@ rnd_serializer.py
 .idea/
 *.pyc
 *.pyo
+.env
