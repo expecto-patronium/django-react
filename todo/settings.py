@@ -113,11 +113,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'front-todo/build/static'), ]
+STATIC_URL = '/static/static/'
+STATICFILES_DIRS = [(os.path.join(BASE_DIR, 'static/static')), ]
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'front-todo/build/static')
-
+print("Static Dir:", STATICFILES_DIRS)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
