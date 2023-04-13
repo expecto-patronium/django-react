@@ -4,9 +4,13 @@ runtime: python38
 handlers:
 
 
-- url: /front-todo/build
-  static_dir: front-todo/build/
+- url: /(.*\..+)$
+  static_files: front-todo/build/\1
+  upload: front-todo/build/(.*\..+)$
+# Catch all handler to index.html
 - url: /.*
-  script: auto
-
+  static_files: front-todo/build/index.html
+  upload: front-todo/build/index.html
+  
+  
 entrypoint: gunicorn -b :$PORT core.wsgi
