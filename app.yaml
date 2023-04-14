@@ -12,4 +12,4 @@ handlers:
   upload: front-todo/build/index.html
   
   
-entrypoint: gunicorn -b :$PORT core.wsgi
+entrypoint: gunicorn -b :$PORT todo.wsgi
