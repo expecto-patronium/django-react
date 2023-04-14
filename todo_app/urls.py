@@ -15,7 +15,5 @@ urlpatterns = [
     path('login/', TemplateView.as_view(template_name='index.html')),
     path('home/', TemplateView.as_view(template_name='index.html')),
     path("google_user/", views.get_google_user),
-    path("hello/", views.hello),
-
-
+    path("hello/", views.hello)
 ]
