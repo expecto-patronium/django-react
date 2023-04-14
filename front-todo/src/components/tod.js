@@ -7,7 +7,6 @@ import { unSetUserToken } from '../features/authSlice';
 import { unsetUserInfo } from '../features/userSlice';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import Card from 'react-bootstrap/Card';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
@@ -34,7 +33,6 @@ function Todo() {
   // const [newTask, setNewTask] = useState('');
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
   const [updateData, setUpdateData] = useState('');
 
   useEffect(()=>{

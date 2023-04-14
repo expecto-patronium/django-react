@@ -14,14 +14,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />} >
-          {/* <Route path="/new" element={<Card2 />} /> */}
-
             { <Route index element={!access_token ? <LoginReg /> : <Navigate to="/home" />} /> }
             <Route path="login" index element={!access_token ? <LoginReg /> : <Navigate to="/home" />} />
             </Route>
 
-          {/* <Route path="/home" element={access_token ? <Todo /> : <Navigate to="/login" />} /> */}
-          <Route path="/home" element={<Card />} />
+          <Route path="/home" element={access_token ? <Card /> : <Navigate to="/login" />} />
+          {/* <Route path="/home" element={<Card />} /> */}
 
           <Route path="*" element={<h1>Error 404 Page not found !!</h1>} />
         </Routes>

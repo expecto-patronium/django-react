@@ -3,22 +3,21 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from .renderer import UserRenderer
 from .models import TodoModel
-from .serializers import TodoSerializer, RegisterSerializer, UserProfileSerializer
+from .serializers import TodoSerializer, RegisterSerializer, UserProfileSerializer, RegisterGoogleSerializer
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 from datetime import datetime
 from django.shortcuts import render
+from django.contrib.auth.models import User
 
-
-# from rest_framework.permissions import IsAuthenticated
 
 def get_tokens_for_user(user):
     refresh = RefreshToken.for_user(user)
     return {
         'refresh': str(refresh),
-        'access': str(refresh.access_token),
+        'access': str(refresh.access_token)
     }
 
 
@@ -37,7 +36,6 @@ def index(request, *args, **kwargs):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def add_todo(requests):
-    print("-----------", requests.data)
     requests.data["updated_at"] = datetime.now()
     serializer = TodoSerializer(data=requests.data, many=False)
     if serializer.is_valid():
@@ -49,7 +47,6 @@ def add_todo(requests):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def update_todo(requests, pk):
-    print(requests.data)
     task = TodoModel.objects.get(id=pk)
     serializer = TodoSerializer(instance=task, data=requests.data, partial=True)
     if serializer.is_valid():
@@ -94,40 +91,32 @@ class UserprofileView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, requests):
-        serializer = UserProfileSerializer(requests.user)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        serializer = UserProfileSerializer(requests.user).data
+        if "@" in serializer.get("username"):
+            email = serializer.get("username")
+            serializer["username"] = serializer.get("email")
+            serializer["email"] = email
+        return Response(serializer, status=status.HTTP_200_OK)
 
-# @api_view(["POST"])
-# def add_comment(requests):
-#     serializer = CommentSerializer(data=requests.data)
-#     if serializer.is_valid():
-#         serializer.save()
-#         return Response(serializer.data, status=201)
-#     return Response(serializer.errors, status=400)
-#
-#
-# @api_view(["GET"])
-# def get_comments(requests, pk):
-#     todo = TodoModel.objects.get(id=pk)
-#     comments = todo.comments.all()
-#     serializer = CommentSerializer(comments, many=True)
-#     return Response(serializer.data)
 
-# class TodoList(APIView):
-#     def get(self, request, pk):
-#         todo = self.get_object(pk)
-#         serializer = TodoSerializer(todo)
-#         return Response(serializer.data)
-#
-#     def put(self, request, pk):
-#         todo = self.get_object(pk)
-#         serializer = TodoSerializer(todo, data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-#
-#     def delete(self, requests, pk):
-#         todo = self.get_object(pk)
-#         todo.delete()
-#         return Response(status=status.HTTP_400_BAD_REQUEST)
+def check_user(name):
+    try:
+        return User.objects.get(username=name)
+    except:
+        return None
+
+
+@api_view(["POST"])
+def get_google_user(request):
+    name = request.data.get("email")
+    get_user = check_user(name)
+    if not get_user:
+        data = {"username": request.data.get("email"), "email": request.data.get("name")}
+        serializer = RegisterGoogleSerializer(data=data)
+        if serializer.is_valid():
+            user = serializer.save()
+            token = get_tokens_for_user(user)
+            return Response({'token': token, 'msg': 'Registration Successful'}, status=status.HTTP_201_CREATED)
+    else:
+        token = get_tokens_for_user(get_user)
+        return Response({'token': token, 'msg': 'Successful'}, status=status.HTTP_200_OK)

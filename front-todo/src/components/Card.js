@@ -43,7 +43,7 @@ function Card() {
     axios.get(`${base_url}/profile/`,auth_token).then((response) => {
       setlogged(response.data);
     });
-})
+},[])
 
   // Add task 
   const addTask = () => {

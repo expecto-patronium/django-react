@@ -5,6 +5,8 @@ import Registration from './Registration';
 import UserLogin from './UserLogin';
 import { ShoppingBag } from '@mui/icons-material';
 
+
+
 const TabPanel = (props) => {
   const { children, value, index } = props;
   return (
@@ -17,11 +19,13 @@ const TabPanel = (props) => {
     </div>
   )
 }
-const LoginReg = () => {
+function LoginReg  () {
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   }
+
+  
   return <>
     <Grid container sx={{ height: '90vh' }}>
       <Grid item lg={7} sm={5} sx={{

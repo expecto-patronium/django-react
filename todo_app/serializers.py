@@ -40,7 +40,18 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.set_password(validated_data["password"])
         return user
 
-#
+
+class RegisterGoogleSerializer(serializers.ModelSerializer):
+    email = serializers.CharField(write_only=True, required=True, allow_blank=False)
+
+    class Meta:
+        model = User
+        fields = ('username', 'email')
+
+    def create(self, validated_data):
+        user = User.objects.create_user(username=validated_data['username'], email=validated_data["email"])
+        return user
+
 # class SignupSerializer(serializers.ModelSerializer):
 #     class Meta:
 #         model = UserData
