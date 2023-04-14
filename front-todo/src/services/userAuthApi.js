@@ -3,7 +3,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 // Define a service using a base URL and expected endpoints
 export const userAuthApi = createApi({
   reducerPath: 'userAuthApi',
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
+  // baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL })
+  baseQuery:fetchBaseQuery({baseUrl:'https://hasnain-django-react3-dot-cloud-work-314310.ew.r.appspot.com'}),
   endpoints: (builder) => ({
     registerUser:builder.mutation({
       query:(user)=>{
