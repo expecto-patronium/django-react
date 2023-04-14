@@ -2,7 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import LoginReg from "./pages/auth/LoginReg";
 import Layout from "./pages/Layout";
 import { useSelector } from "react-redux";
-import Todo from "./components/tod";
+// import Todo from "./components/tod";
 import Card from "./components/Card";
 // import "./App.css"
 function App() {

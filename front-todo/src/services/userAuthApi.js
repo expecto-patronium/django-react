@@ -3,12 +3,12 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 // Define a service using a base URL and expected endpoints
 export const userAuthApi = createApi({
   reducerPath: 'userAuthApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://127.0.0.1:8000/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
   endpoints: (builder) => ({
     registerUser:builder.mutation({
       query:(user)=>{
         return {
-          url:'register/',
+          url:'/register/',
           method:'POST',
           body:user,
           headers:{"Content-type":"application/json"}
@@ -20,7 +20,7 @@ export const userAuthApi = createApi({
   loginUser:builder.mutation({
     query:(user)=>{
         return {
-          url:"token/",
+          url:"/token/",
           method:"POST",
           body:user,
           headers:{'Content-type':"application/json"}
@@ -43,7 +43,7 @@ export const userAuthApi = createApi({
   getAllTodos:builder.query({
       query:()=>{
         return{
-          url:'all-todo/',
+          url:'/all-todo/',
           method:"GET",
           // headers:{'authorization':`Bearer ${access_token}`}
         }
@@ -52,7 +52,7 @@ export const userAuthApi = createApi({
   addTodo:builder.mutation({
     query:(access_token,data)=>{
       return{
-        url:'add-todo',
+        url:'/add-todo',
         method:'POST',
         body:data,
         headers:{"authorization":`Bearer ${access_token}`}
@@ -63,7 +63,7 @@ export const userAuthApi = createApi({
   deleteTodo:builder.query({
     query:({access_token,id})=>{
       return{
-        url:`delete-todo/${id}/`,
+        url:`/delete-todo/${id}/`,
         method:'DELETE',
         headers:{'authorization': `Bearer ${access_token}`}
       }

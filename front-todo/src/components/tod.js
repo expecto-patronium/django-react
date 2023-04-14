@@ -29,38 +29,38 @@ function Todo() {
   const auth_token = {headers:{'Authorization': `Bearer ${access_token}`}}
   const [toDo, setToDo] = useState([]);
   let [logged, setlogged] = useState([]);
-//  const base_url = 'https://todo-web4-2drk4lqwsa-uc.a.run.app/'
+ const base_url = process.env.REACT_APP_BASE_URL
   // Temp State
-  const [newTask, setNewTask] = useState('');
+  // const [newTask, setNewTask] = useState('');
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
   const [updateData, setUpdateData] = useState('');
 
   useEffect(()=>{
-    axios.get(`/all-todo/`,auth_token).then((response) => {
+    axios.get(`${base_url}/all-todo/`,auth_token).then((response) => {
       setToDo(response.data);
     });
-    axios.get(`/profile/`,auth_token).then((response) => {
+    axios.get(`${base_url}/profile/`,auth_token).then((response) => {
       setlogged(response.data);
     });
-},[])
+})
 
   // Add task
   const addTask = () => {
     if(title || description) {
         let newEntry = {title: title,description:description, status: false}
-        axios.post(`/add-todo/`,newEntry,auth_token).then((response) => {
+        axios.post(`${base_url}/add-todo/`,newEntry,auth_token).then((response) => {
           setToDo([...toDo, response.data]);
         });
-        setNewTask('');
+        // setNewTask('');
         setTitle('');
         setDescription('');
     }
   }
   const deleteTask = (id) => {
     let newTasks = toDo.filter((task) => task.id !== id);
-    axios.delete(`/delete-todo/${id}/`,auth_token).then((response) => {
+    axios.delete(`${base_url}/delete-todo/${id}/`,auth_token).then((response) => {
     });
     setToDo(newTasks);}
 
@@ -68,7 +68,7 @@ function Todo() {
   const markDone = (id) => {
     const newTasks = toDo.map((task) => {
       if (task.id === id){
-        axios.post(`/update-todo/${id}/`,{status:!task.status},auth_token).then((response) => {
+        axios.post(`${base_url}/update-todo/${id}/`,{status:!task.status},auth_token).then((response) => {
         });
         return ({ ...task, status: !task.status })
       }
@@ -105,7 +105,7 @@ function Todo() {
 
   // update task
   const updateTask = () => {
-    axios.post(`/update-todo/${updateData.id}/`,updateData,auth_token).then((response) => {
+    axios.post(`${base_url}/update-todo/${updateData.id}/`,updateData,auth_token).then((response) => {
       // setToDo(response.data);
     });
     let filterRecords = [...toDo].filter( task=>task.id !== updateData.id);
