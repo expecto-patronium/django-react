@@ -106,6 +106,11 @@ def check_user(name):
         return None
 
 
+@api_view(["GET"])
+def hello():
+    return Response({"hello": "working"})
+
+
 @api_view(["POST"])
 def get_google_user(request):
     name = request.data.get("email")

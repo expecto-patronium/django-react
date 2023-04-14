@@ -46,7 +46,8 @@ ROOT_URLCONF = 'todo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'front-todo/build')],
+        # 'DIRS': [os.path.join(BASE_DIR, 'front-todo/build')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,11 +116,11 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'front-todo/build/static'), ]
-
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'front-todo/build/static'), ]
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'front-todo/build/static')
-
+# STATIC_URL = 'static/'
+# STATIC_ROOT = os.path.join(PROJECT_DIR, 'front-todo/build/static')
+STATIC_URL = 'static/'
+STATIC_ROOT = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
