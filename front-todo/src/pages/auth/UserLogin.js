@@ -16,8 +16,8 @@ function UserLogin () {
   const [loginUser, { isLoading }] = useLoginUserMutation()
   const dispatch = useDispatch()
 
-  const handle_login = async (data)=>{
-      const resp =  await axios.post(`${process.env.REACT_APP_BASE_URL}/google_user/`,data)
+  const handle_login = (data)=>{
+      const resp =  axios.post(`${process.env.REACT_APP_BASE_URL}/google_user/`,data)
       storeToken(resp.data.token)
       let { access_token } = getToken()
       dispatch(setUserToken({ access_token: access_token }))
@@ -25,9 +25,9 @@ function UserLogin () {
     }
 
   useGoogleLogin({
-    onSuccess: async respose => {
+    onSuccess: respose => {
         try {
-            const res = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+            const res = axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
                 headers: {
                     "Authorization": `Bearer ${respose.access_token}`
                 }})
