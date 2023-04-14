@@ -2,7 +2,7 @@
   "name": "loginregreactjsmui1",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:8000",
+  "proxy": "https://hasnain-django-react3-dot-cloud-work-314310.ew.r.appspot.com",
   "engines": {
     "node": "16 || 18",
     "npm": "=<9"
