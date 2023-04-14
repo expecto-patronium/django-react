@@ -30,7 +30,7 @@ function Card() {
   let [logged, setlogged] = useState([]);
   // const base_url = process.env.REACT_APP_BASE_URL
   const base_url = 'https://hasnain-django-react3-dot-cloud-work-314310.ew.r.appspot.com'
-  // const base_url = "http://localhost:8000"
+  // const base_url = "http://127.0.0.1:8000" 
 
   // Temp State
   // const [newTask, setNewTask] = useState('');
