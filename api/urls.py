@@ -1,14 +1,13 @@
-from django.urls import path,include
+from django.urls import path, include
 from django.views.generic import TemplateView
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from api import views
+from . import views
 
 urlpatterns = [
     # path('hello/', views.HelloView.as_view(), name='hello'),
     path('test/', views.test_api, name='test'),
     path('api/', include('rest_framework.urls')),
-
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
     path('register/', views.register_user, name='register'),

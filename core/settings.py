@@ -78,19 +78,19 @@ DATABASES = {
     #     # 'HOST': os.environ.get("DB_HOST_HASNAIN"),
     #     # "PORT": os.environ.get("DB_PORT_HASNAIN")
     # },
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "hasnain_db",
-        'USER': "hasnain",
-        'PASSWORD': "#Galaxyj5",
-        'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
-        # 'HOST': os.environ.get("DB_HOST_HASNAIN"),
-        # "PORT": os.environ.get("DB_PORT_HASNAIN")
-    },
     # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': "hasnain_db",
+    #     'USER': "hasnain",
+    #     'PASSWORD': "#Galaxyj5",
+    #     'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
+    #     # 'HOST': os.environ.get("DB_HOST_HASNAIN"),
+    #     # "PORT": os.environ.get("DB_PORT_HASNAIN")
+    # },
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -132,7 +132,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=360),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=360),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
