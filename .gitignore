@@ -7,4 +7,4 @@ rnd_serializer.py
 *.pyo
 .env
 rnd_serizlie.py
-front-todo/
+#front-todo/
