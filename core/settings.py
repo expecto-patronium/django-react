@@ -1,7 +1,8 @@
 from pathlib import Path
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 from dotenv import load_dotenv
 import os
+from datetime import timedelta
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
@@ -63,13 +64,21 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # 'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': os.environ.get('DB_NAME_HASNAIN'),
+    #     'USER': os.environ.get('DB_USER_HASNAIN'),
+    #     'PASSWORD': os.environ.get('DB_PWD_HASNAIN'),
+    #     'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
+    #     # 'HOST': os.environ.get("DB_HOST_HASNAIN"),
+    #     # "PORT": os.environ.get("DB_PORT_HASNAIN")
+    # },
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME_HASNAIN'),
-        'USER': os.environ.get('DB_USER_HASNAIN'),
-        'PASSWORD': os.environ.get('DB_PWD_HASNAIN'),
+        'NAME': "hasnain_db",
+        'USER': "hasnain",
+        'PASSWORD': "#Galaxyj5",
         'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
-
         # 'HOST': os.environ.get("DB_HOST_HASNAIN"),
         # "PORT": os.environ.get("DB_PORT_HASNAIN")
     },
@@ -108,14 +117,8 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
-
 STATIC_URL = 'static/'
 STATIC_ROOT = 'static/'
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -125,10 +128,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
-
-from datetime import timedelta
-
-...
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=360),

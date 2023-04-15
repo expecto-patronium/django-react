@@ -128,7 +128,7 @@ def check_user(name):
 
 
 @api_view(["GET"])
-def hello():
+def hello(requests):
     return Response({"hello": "working"})
 
 
