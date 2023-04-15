@@ -55,8 +55,8 @@ jobs:
     - name: Connect to gcloud
       uses: google-github-actions/setup-gcloud@v0
       with:
-        project_id: ${{ secrets.PROJECT_ID }}
-        service_account_key: ${{ secrets.SERVICE_ACCOUNT}}
+        project_id: ${{ secrets.PROJECT_ID_HASNAIN }}
+        service_account_key: ${{ secrets.SERVICE_ACCOUNT_HASNAIN}}
         export_default_credentials: true
     - name: Gather Static Files
       run: python manage.py collectstatic --noinput
