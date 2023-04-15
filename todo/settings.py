@@ -40,6 +40,10 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+'http://localhost:3000',
+'http://127.0.0.1:3000'
+]
 ROOT_URLCONF = 'todo.urls'
 
 TEMPLATES = [
@@ -122,11 +126,9 @@ USE_TZ = True
 # ]
 STATICFILES_DIRS = (
     os.path.join(os.path.join(BASE_DIR, 'front-todo'), 'build', 'static'),
-    # os.path.join(os.path.join(BASE_DIR, 'static')),
+    os.path.join(os.path.join(BASE_DIR, 'front-todo'), 'build'),
 )
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-# STATIC_URL = 'static/'
-# STATIC_ROOT = os.path.join(PROJECT_DIR, 'front-todo/build/static')
 STATIC_URL = '/static/'
 STATIC_ROOT = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
