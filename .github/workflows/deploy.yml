@@ -15,14 +15,14 @@ jobs:
   deploy:
     name: Deploying to Google Cloud
     runs-on: ubuntu-latest
-    ##### ANY SECRETS WHICH ARE TO BE SET AS ENV's ON UBUNTU LATEST IMAGE BEFORE DEPLOYMENT, THIS DOESNOT SET ENV's FOR APP ENGINE
-    env:
-      DB_NAME_HASNAIN: ${{ secrets.DB_NAME_HASNAIN}}
-      DB_USER_HASNAIN: ${{ secrets.DB_USER_HASNAIN}}
-      DB_PWD_HASNAIN: ${{ secrets.DB_PWD_HASNAIN}}
-      DJANGO_SECRET_HASNAIN: ${{ secrets.DJANGO_SECRET_HASNAIN }}
-      DB_PORT_HASNAIN : ${{ secrets.DB_PORT_HASNAIN }}
-      DB_HOST_HASNAIN : ${{ secrets.DB_HOST_HASNAIN }}
+#    ##### ANY SECRETS WHICH ARE TO BE SET AS ENV's ON UBUNTU LATEST IMAGE BEFORE DEPLOYMENT, THIS DOESNOT SET ENV's FOR APP ENGINE
+#    env:
+#      DB_NAME_HASNAIN: ${{ secrets.DB_NAME_HASNAIN}}
+#      DB_USER_HASNAIN: ${{ secrets.DB_USER_HASNAIN}}
+#      DB_PWD_HASNAIN: ${{ secrets.DB_PWD_HASNAIN}}
+#      DJANGO_SECRET_HASNAIN: ${{ secrets.DJANGO_SECRET_HASNAIN }}
+#      DB_PORT_HASNAIN : ${{ secrets.DB_PORT_HASNAIN }}
+#      DB_HOST_HASNAIN : ${{ secrets.DB_HOST_HASNAIN }}
 
     #   GOOGLE_APP_CLIENT_ID: ${{ secrets.GOOGLE_APP_CLIENT_SECRET }}
     #   GOOGLE_APP_KEY: ${{ secrets.GOOGLE_APP_KEY }}
