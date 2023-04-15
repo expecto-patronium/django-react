@@ -2,6 +2,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from dotenv import load_dotenv
 import os
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv()
 
@@ -25,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework_simplejwt',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -61,14 +63,18 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # 'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': os.environ.get('DB_NAME_HASNAIN'),
+    #     'USER': os.environ.get('DB_USER_HASNAIN'),
+    #     'PASSWORD': os.environ.get('DB_PWD_HASNAIN'),
+    #     'HOST': os.environ.get("DB_HOST_HASNAIN"),
+    #     "PORT": os.environ.get("DB_PORT_HASNAIN")
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME_HASNAIN'),
-        'USER': os.environ.get('DB_USER_HASNAIN'),
-        'PASSWORD': os.environ.get('DB_PWD_HASNAIN'),
-        'HOST': os.environ.get("DB_HOST_HASNAIN"),
-        "PORT": os.environ.get("DB_PORT_HASNAIN")
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 # Password validation
