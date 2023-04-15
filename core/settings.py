@@ -5,9 +5,6 @@ import os
 
 load_dotenv()
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.environ.get('DJANGO_SECRET_HASNAIN')
 SECRET_KEY = "django-insecure-#)g#r#@6rckvrsd6budy2_id7&2yr)y@_nn^!^)^pb86jk)5hm"
