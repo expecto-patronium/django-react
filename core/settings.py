@@ -69,24 +69,24 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # 'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME_HASNAIN'),
-        'USER': os.environ.get('DB_USER_HASNAIN'),
-        'PASSWORD': os.environ.get('DB_PWD_HASNAIN'),
-        'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
-        # 'HOST': os.environ.get("DB_HOST_HASNAIN"),
-        # "PORT": os.environ.get("DB_PORT_HASNAIN")
-    },
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': "hasnain_db",
-    #     'USER': "hasnain",
-    #     'PASSWORD': "#Galaxyj5",
+    #     'NAME': os.environ.get('DB_NAME_HASNAIN'),
+    #     'USER': os.environ.get('DB_USER_HASNAIN'),
+    #     'PASSWORD': os.environ.get('DB_PWD_HASNAIN'),
     #     'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
     #     # 'HOST': os.environ.get("DB_HOST_HASNAIN"),
     #     # "PORT": os.environ.get("DB_PORT_HASNAIN")
     # },
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': "hasnain_db",
+        'USER': "hasnain",
+        'PASSWORD': "#Galaxyj5",
+        'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
+        # 'HOST': os.environ.get("DB_HOST_HASNAIN"),
+        # "PORT": os.environ.get("DB_PORT_HASNAIN")
+    },
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
