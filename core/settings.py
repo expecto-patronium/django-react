@@ -8,8 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get('DJANGO_SECRET_HASNAIN')
-SECRET_KEY = "django-insecure-#)g#r#@6rckvrsd6budy2_id7&2yr)y@_nn^!^)^pb86jk)5hm"
+SECRET_KEY = os.environ.get('DJANGO_SECRET_HASNAIN')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -65,32 +64,30 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-# Database
-# 'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
+if os.environ.get("ENV") == 'prod':
+    database = {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DB_NAME_HASNAIN'),
+        'USER': os.environ.get('DB_USER_HASNAIN'),
+        'PASSWORD': os.environ.get('DB_PWD_HASNAIN'),
+        'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week'}
+if os.environ.get("ENV") == 'dev':
+    database = {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get('DB_NAME_HASNAIN'),
+        'USER': os.environ.get('DB_USER_HASNAIN'),
+        'PASSWORD': os.environ.get('DB_PWD_HASNAIN'),
+        'HOST': os.environ.get("DB_HOST_HASNAIN"),
+        "PORT": "3308"}
+
+else:
+    database = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': os.environ.get('DB_NAME_HASNAIN'),
-    #     'USER': os.environ.get('DB_USER_HASNAIN'),
-    #     'PASSWORD': os.environ.get('DB_PWD_HASNAIN'),
-    #     'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
-    #     # 'HOST': os.environ.get("DB_HOST_HASNAIN"),
-    #     # "PORT": os.environ.get("DB_PORT_HASNAIN")
-    # },
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "hasnain_db",
-        'USER': "hasnain",
-        'PASSWORD': "#Galaxyj5",
-        'HOST': '/cloudsql/cloud-work-314310:us-central1:training-week',
-        # 'HOST': os.environ.get("DB_HOST_HASNAIN"),
-        # "PORT": os.environ.get("DB_PORT_HASNAIN")
-    },
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
+    'default': database
 }
 
 AUTH_PASSWORD_VALIDATORS = [
