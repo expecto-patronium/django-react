@@ -5,6 +5,6 @@ rnd_serializer.py
 .idea/
 *.pyc
 *.pyo
-#.env
+.env
 rnd_serizlie.py
 #front-todo/

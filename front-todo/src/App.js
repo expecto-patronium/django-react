@@ -7,12 +7,20 @@ import Card from "./components/Card";
 // import "./App.css"
 function App() {
   const { access_token } = useSelector(state => state.auth)
-
+  const chekcenv = () => {
+    const env_c = `${process.env.REACT_APP_BASE_URL}`
+    console.log("-----",env_c)
+    if (env_c){
+      console.log("-----",`${process.env.REACT_APP_BASE_URL}`)
+      return "working"
+    }
+    else{
+      return "not working"
+    }
+  }
   
   return (
     <>
-      {/* <p> Environent:{process.env.REACT_APP_clientId}</p> */}
-
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />} >

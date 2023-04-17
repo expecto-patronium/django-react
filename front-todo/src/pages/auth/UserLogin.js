@@ -17,7 +17,8 @@ function UserLogin () {
   const dispatch = useDispatch()
 
   const handle_login = async (data)=>{
-      const resp =  await axios.post(`${process.env.REACT_APP_BASE_URL}/google_user/`,data)
+    const base_url = 'https://hasnain-django-api-dot-cloud-work-314310.ew.r.appspot.com'
+      const resp =  await axios.post(`${base_url}/google_user/`,data)
       storeToken(resp.data.token)
       let { access_token } = getToken()
       dispatch(setUserToken({ access_token: access_token }))
