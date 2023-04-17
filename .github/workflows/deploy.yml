@@ -16,13 +16,16 @@ jobs:
     name: Deploying to Google Cloud
     runs-on: ubuntu-latest
 #    ##### ANY SECRETS WHICH ARE TO BE SET AS ENV's ON UBUNTU LATEST IMAGE BEFORE DEPLOYMENT, THIS DOESNOT SET ENV's FOR APP ENGINE
-#    env:
-#      DB_NAME_HASNAIN: ${{ secrets.DB_NAME_HASNAIN}}
-#      DB_USER_HASNAIN: ${{ secrets.DB_USER_HASNAIN}}
-#      DB_PWD_HASNAIN: ${{ secrets.DB_PWD_HASNAIN}}
-#      DJANGO_SECRET_HASNAIN: ${{ secrets.DJANGO_SECRET_HASNAIN }}
-#      DB_PORT_HASNAIN : ${{ secrets.DB_PORT_HASNAIN }}
-#      DB_HOST_HASNAIN : ${{ secrets.DB_HOST_HASNAIN }}
+    env:
+      DB_NAME_HASNAIN: ${{ secrets.DB_NAME_HASNAIN}}
+      DB_USER_HASNAIN: ${{ secrets.DB_USER_HASNAIN}}
+      DB_PWD_HASNAIN: ${{ secrets.DB_PWD_HASNAIN}}
+      DJANGO_SECRET_HASNAIN: ${{ secrets.DJANGO_SECRET_HASNAIN }}
+      DB_PORT_HASNAIN : ${{ secrets.DB_PORT_HASNAIN }}
+      DB_HOST_HASNAIN : ${{ secrets.DB_HOST_HASNAIN }}
+      REACT_APP_BASE_URL : ${{ secrets.REACT_APP_BASE_URL }}
+      REACT_APP_clientId : ${{ secrets.REACT_APP_clientId }}
+      
 
     #   GOOGLE_APP_CLIENT_ID: ${{ secrets.GOOGLE_APP_CLIENT_SECRET }}
     #   GOOGLE_APP_KEY: ${{ secrets.GOOGLE_APP_KEY }}
@@ -36,19 +39,21 @@ jobs:
 #            cd front-todo
 #            npm dedupe
 #            npm install --force
-#            npm run build
+#            CI=npm run build
 #            cd ..
       
     ##### CREATE RUNTIME ENV FILE FOR DEPLOYMENT, AND ADD SERVICE-ACCOUNT-KEY.json IF NEEDED
-#    - name: Creating Runtime .env and add service-account-key
-#      run: |
-#         touch .env
-#         echo  DB_NAME_HASNAIN="${{ secrets.DB_NAME_HASNAIN }}" >> .env
-#         echo  DB_USER_HASNAIN="${{ secrets.DB_USER_HASNAIN }}" >> .env
-#         echo  DB_PWD_HASNAIN="${{ secrets.DB_PWD_HASNAIN }}" >> .env
-#         echo  DJANGO_SECRET_HASNAIN="${{ secrets.DJANGO_SECRET_HASNAIN }}" >> .env
-#         echo  DB_PORT_HASNAIN="${{ secrets.DB_PORT_HASNAIN }}" >> .env
-#         echo  DB_HOST_HASNAIN="${{ secrets.DB_HOST_HASNAIN }}" >> .env
+    - name: Creating Runtime .env and add service-account-key
+      run: |
+         touch .env
+         echo  DB_NAME_HASNAIN="${{ secrets.DB_NAME_HASNAIN }}" >> .env
+         echo  DB_USER_HASNAIN="${{ secrets.DB_USER_HASNAIN }}" >> .env
+         echo  DB_PWD_HASNAIN="${{ secrets.DB_PWD_HASNAIN }}" >> .env
+         echo  DJANGO_SECRET_HASNAIN="${{ secrets.DJANGO_SECRET_HASNAIN }}" >> .env
+         echo  DB_PORT_HASNAIN="${{ secrets.DB_PORT_HASNAIN }}" >> .env
+         echo  DB_HOST_HASNAIN="${{ secrets.DB_HOST_HASNAIN }}" >> .env
+         echo  REACT_APP_BASE_URL : ${{ secrets.REACT_APP_BASE_URL }} >> front-todo/.env
+         echo  REACT_APP_clientId : ${{ secrets.REACT_APP_clientId }} >> front-todo/.env
     #     echo  BUCKET="${{ secrets.BUCKET }}" >> .env
     #     echo  GOOGLE_APPLICATION_CREDENTIALS="./service-account-key.json"
     #     touch service-account-key.json
@@ -89,4 +94,4 @@ jobs:
         deliverables: app.yaml
         version: v1
         project_id: ${{ secrets.PROJECT_ID_HASNAIN}}
-        credentials: ${{  secrets.SERVICE_ACCOUNT_HASNAIN}}
+        credentials: ${{  secrets.SERVICE_ACCOUNT_HASNAIN }}
