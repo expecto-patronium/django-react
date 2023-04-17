@@ -87,7 +87,7 @@ if os.environ.get("ENV") == 'local':
 else:
     database = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "",
+        'NAME': "hasnain_db",
         'USER': "hasnain",
         'PASSWORD': "#galaxyj5",
         'HOST': "/cloudsql/cloud-work-314310:us-central1:training-week"}
