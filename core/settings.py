@@ -79,12 +79,18 @@ if os.environ.get("ENV") == 'dev':
         'PASSWORD': os.environ.get('DB_PWD_HASNAIN'),
         'HOST': os.environ.get("DB_HOST_HASNAIN"),
         "PORT": "3308"}
-
-else:
+if os.environ.get("ENV") == 'local':
     database = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+else:
+    database = {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': "",
+        'USER': "hasnain",
+        'PASSWORD': "#galaxyj5",
+        'HOST': "/cloudsql/cloud-work-314310:us-central1:training-week"}
 
 DATABASES = {
     'default': database
