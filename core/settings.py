@@ -89,7 +89,7 @@ else:
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': "hasnain_db",
         'USER': "hasnain",
-        'PASSWORD': "#galaxyj5",
+        'PASSWORD': "#Galaxyj5",
         'HOST': "/cloudsql/cloud-work-314310:us-central1:training-week"}
 
 DATABASES = {
