@@ -7,7 +7,7 @@ import { getToken, storeToken } from '../../services/LocalStorageService';
 import { useLoginUserMutation } from '../../services/userAuthApi';
 import {GoogleLogin} from '@react-oauth/google';
 import jwt_decode from "jwt-decode";
-// import {useGoogleLogin} from '@react-oauth/google';
+import {useGoogleLogin} from '@react-oauth/google';
 import axios from "axios"
 
 function UserLogin () {
@@ -25,22 +25,22 @@ function UserLogin () {
       navigate('/home')
     }
 
-//   const v1 = useGoogleLogin({
-//     onSuccess: async respose => {
-//         try {
-//             const res = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
-//                 headers: {
-//                     "Authorization": `Bearer ${respose.access_token}`
-//                 }})
-//             // console.log(respose.access_token)
-//             console.log("data1.....",res.data)
-//         } catch (err) {
-//             console.log(err)
+useGoogleLogin({
+    onSuccess: async respose => {
+        try {
+            const res = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+                headers: {
+                    "Authorization": `Bearer ${respose.access_token}`
+                }})
+            // console.log(respose.access_token)
+            console.log("data1.....",res.data)
+        } catch (err) {
+            console.log(err)
 
-//         }
+        }
 
-//     }
-// });
+    }
+});
 
 
   const handleSubmit = async (e) => {
